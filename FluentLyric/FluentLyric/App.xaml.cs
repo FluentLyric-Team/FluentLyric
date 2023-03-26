@@ -2,8 +2,16 @@
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Shapes;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -53,7 +61,8 @@ namespace FluentLyric
             {
                 rootFrame = new Frame();
                 rootFrame.NavigationFailed += OnNavigationFailed;
-                m_window.Content = rootFrame;  
+                m_window.Content = rootFrame;
+                
             }
 
             if(rootFrame.Content == null)
@@ -98,6 +107,7 @@ namespace FluentLyric
             WindowId windowId = Win32Interop.GetWindowIdFromWindow(hwnd);
             return AppWindow.GetFromWindowId(windowId);
         }
+
 
         public static Window m_window;
         public static CloudMusicApi musicApi;
